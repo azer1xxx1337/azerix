@@ -283,7 +283,11 @@ footer{background:radial-gradient(60% 120% at 50% 100%,rgba(228,236,246,calc(.05
 .contact .cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 .contact::before{content:"";position:absolute;left:50%;top:60%;width:min(900px,120vw);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent),transparent 65%);z-index:-1;transition:background 1s}
 footer{border-top:1px solid var(--line);padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));color:var(--dim);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .wrap{display:flex;flex-direction:column;gap:26px}
+.fabout{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-top:14px}
+.fabout .logo{color:var(--fg)}
+.fabout p{margin:0;max-width:560px;color:var(--mut);font-size:14px;line-height:1.6}
+.fbot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line)}
 .rv{opacity:0;transform:translateY(30px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
 .rv.vis{opacity:1;transform:none}
 
@@ -418,7 +422,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </div></section>
 </main>
 <a class="btn fcta" id="fcta" href="https://wa.me/34604985669" target="_blank" rel="noopener"><span class="pd"></span><span data-t="n5">Обсудить проект</span></a>
-<footer><div class="wrap"><span>© 2026 Azerix Company</span><span data-t="ft">Испания · работаем удалённо</span></div></footer>
+<footer><div class="wrap">
+  <div class="fabout"><a class="logo" href="#top"><i></i>Azerix<small>company</small></a><p data-t="fd">Azerix Company — студия веб-разработки из Испании. Делаем лендинги, сайты для бизнеса, интернет-магазины и 3D-презентации товаров: быстрые, адаптивные под телефон и с анимациями, которые запоминаются. Работаем на украинском, русском, английском и испанском.</p></div>
+  <div class="fbot"><span>© 2026 Azerix Company</span><span data-t="ft">Испания · работаем удалённо</span></div>
+</div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
 <script>
@@ -431,7 +438,7 @@ const P=[
  {id:'montana',name:'Montana',full:'Montana',url:'https://azer1xxx1337.github.io/Montana/',acc:'#b9dca2',acc2:'#1c3a2a',tags:['Three.js','GLTF','LCD']}
 ];
 const T={
-ru:{lw:'Последние работы',m1:'живых проектов',m2:'WebGL и Three.js',m3:'языка',m4:'Испания · удалённо',view:'Открыть',n1:'Работы',n2:'Услуги',n3:'Процесс',n4:'О нас',n5:'Обсудить проект',av:'Открыты для новых проектов',lead:'Делаем сайты, которые <b>продают и запоминаются</b>: лендинги, сайты для бизнеса, магазины и 3D-презентации.',c1:'Смотреть работы',c2:'Связаться',
+ru:{fd:'Azerix Company — студия веб-разработки из Испании. Делаем лендинги, сайты для бизнеса, интернет-магазины и 3D-презентации товаров: быстрые, адаптивные под телефон и с анимациями, которые запоминаются. Работаем на украинском, русском, английском и испанском.',lw:'Последние работы',m1:'живых проектов',m2:'WebGL и Three.js',m3:'языка',m4:'Испания · удалённо',view:'Открыть',n1:'Работы',n2:'Услуги',n3:'Процесс',n4:'О нас',n5:'Обсудить проект',av:'Открыты для новых проектов',lead:'Делаем сайты, которые <b>продают и запоминаются</b>: лендинги, сайты для бизнеса, магазины и 3D-презентации.',c1:'Смотреть работы',c2:'Связаться',
  w1:'Витрина',w2:'работ',w3:'Шесть живых проектов. Листай: каждый можно открыть и потрогать — это настоящие сайты, а не картинки.',open:'Открыть сайт',live:'Живой просмотр',stop:'Закрыть',
  noir:['Магазин парфюма','Люксовый магазин с 3D-флаконом: жидкость, свет и брызги считаются в реальном времени. Каталог, подбор аромата, корзина.'],
  puri:['Ресторан грузинской кухни','Живой огонь на шейдерах, меню с фильтрами и бронь столика. Тёплый, вкусный и быстрый на любом телефоне.'],
@@ -447,7 +454,7 @@ ru:{lw:'Последние работы',m1:'живых проектов',m2:'We
  ab:'Azerix Company — небольшая студия из Испании. Работаем удалённо с клиентами из Украины и Европы, говорим на четырёх языках и делаем каждый сайт так, будто он наш собственный.',
  st1:'живых проектов',st2:'языка общения',st3:'адаптив под телефон',st4:'ответ на заявку',suf:'ч',
  k1:'Есть',k2:'проект?',k3:'Расскажите, чем занимаетесь, — предложим идею и посчитаем стоимость. Бесплатно и без обязательств.',k4:'Заказать на Fiverr',ft:'Испания · работаем удалённо'},
-uk:{lw:'Останні роботи',m1:'живих проєктів',m2:'WebGL і Three.js',m3:'мови',m4:'Іспанія · віддалено',view:'Відкрити',n1:'Роботи',n2:'Послуги',n3:'Процес',n4:'Про нас',n5:'Обговорити проєкт',av:'Відкриті для нових проєктів',lead:'Робимо сайти, які <b>продають і запам’ятовуються</b>: лендинги, сайти для бізнесу, магазини та 3D-презентації.',c1:'Дивитися роботи',c2:'Зв’язатися',
+uk:{fd:'Azerix Company — студія веб-розробки з Іспанії. Робимо лендинги, сайти для бізнесу, інтернет-магазини та 3D-презентації товарів: швидкі, адаптивні під телефон і з анімаціями, які запам’ятовуються. Працюємо українською, російською, англійською та іспанською.',lw:'Останні роботи',m1:'живих проєктів',m2:'WebGL і Three.js',m3:'мови',m4:'Іспанія · віддалено',view:'Відкрити',n1:'Роботи',n2:'Послуги',n3:'Процес',n4:'Про нас',n5:'Обговорити проєкт',av:'Відкриті для нових проєктів',lead:'Робимо сайти, які <b>продають і запам’ятовуються</b>: лендинги, сайти для бізнесу, магазини та 3D-презентації.',c1:'Дивитися роботи',c2:'Зв’язатися',
  w1:'Вітрина',w2:'робіт',w3:'Шість живих проєктів. Гортай: кожен можна відкрити й помацати — це справжні сайти, а не картинки.',open:'Відкрити сайт',live:'Живий перегляд',stop:'Закрити',
  noir:['Магазин парфумів','Люксовий магазин із 3D-флаконом: рідина, світло й бризки рахуються в реальному часі. Каталог, підбір аромату, кошик.'],
  puri:['Ресторан грузинської кухні','Живий вогонь на шейдерах, меню з фільтрами та бронювання столика. Теплий, смачний і швидкий на будь-якому телефоні.'],
@@ -463,7 +470,7 @@ uk:{lw:'Останні роботи',m1:'живих проєктів',m2:'WebGL 
  ab:'Azerix Company — невелика студія з Іспанії. Працюємо віддалено з клієнтами з України та Європи, говоримо чотирма мовами й робимо кожен сайт так, ніби він наш власний.',
  st1:'живих проєктів',st2:'мови спілкування',st3:'адаптив під телефон',st4:'відповідь на заявку',suf:'год',
  k1:'Є',k2:'проєкт?',k3:'Розкажіть, чим займаєтеся, — запропонуємо ідею та порахуємо вартість. Безкоштовно й без зобов’язань.',k4:'Замовити на Fiverr',ft:'Іспанія · працюємо віддалено'},
-en:{lw:'Latest work',m1:'live projects',m2:'WebGL & Three.js',m3:'languages',m4:'Spain · remote',view:'Open',n1:'Work',n2:'Services',n3:'Process',n4:'About',n5:'Start a project',av:'Open for new projects',lead:'We build websites that <b>sell and stay in mind</b>: landing pages, business sites, online stores and 3D product showcases.',c1:'See the work',c2:'Get in touch',
+en:{fd:'Azerix Company is a web development studio based in Spain. We build landing pages, business websites, online stores and 3D product showcases: fast, mobile-first and with animations people remember. We work in Ukrainian, Russian, English and Spanish.',lw:'Latest work',m1:'live projects',m2:'WebGL & Three.js',m3:'languages',m4:'Spain · remote',view:'Open',n1:'Work',n2:'Services',n3:'Process',n4:'About',n5:'Start a project',av:'Open for new projects',lead:'We build websites that <b>sell and stay in mind</b>: landing pages, business sites, online stores and 3D product showcases.',c1:'See the work',c2:'Get in touch',
  w1:'The',w2:'showcase',w3:'Six live projects. Scroll through: each one opens and responds — real websites, not pictures.',open:'Open site',live:'Live preview',stop:'Close',
  noir:['Perfume store','A luxury store with a 3D flacon: liquid, light and spray rendered in real time. Catalogue, scent finder, cart.'],
  puri:['Georgian restaurant','Live fire made of shaders, a filterable menu and table booking. Warm, appetising and fast on any phone.'],
@@ -479,7 +486,7 @@ en:{lw:'Latest work',m1:'live projects',m2:'WebGL & Three.js',m3:'languages',m4:
  ab:'Azerix Company is a small studio based in Spain. We work remotely with clients across Ukraine and Europe, speak four languages and build every site as if it were our own.',
  st1:'live projects',st2:'languages',st3:'mobile-ready',st4:'reply to every request',suf:'h',
  k1:'Have a',k2:'project?',k3:'Tell us what you do and we will suggest an idea and a price. Free, no strings attached.',k4:'Order on Fiverr',ft:'Spain · working remotely'},
-es:{lw:'Últimos trabajos',m1:'proyectos en vivo',m2:'WebGL y Three.js',m3:'idiomas',m4:'España · remoto',view:'Abrir',n1:'Trabajos',n2:'Servicios',n3:'Proceso',n4:'Nosotros',n5:'Hablemos',av:'Disponibles para nuevos proyectos',lead:'Creamos webs que <b>venden y se recuerdan</b>: landing pages, webs de empresa, tiendas y presentaciones 3D.',c1:'Ver trabajos',c2:'Contactar',
+es:{fd:'Azerix Company es un estudio de desarrollo web en España. Creamos landing pages, webs de empresa, tiendas online y presentaciones 3D de producto: rápidas, adaptadas al móvil y con animaciones que se recuerdan. Trabajamos en ucraniano, ruso, inglés y español.',lw:'Últimos trabajos',m1:'proyectos en vivo',m2:'WebGL y Three.js',m3:'idiomas',m4:'España · remoto',view:'Abrir',n1:'Trabajos',n2:'Servicios',n3:'Proceso',n4:'Nosotros',n5:'Hablemos',av:'Disponibles para nuevos proyectos',lead:'Creamos webs que <b>venden y se recuerdan</b>: landing pages, webs de empresa, tiendas y presentaciones 3D.',c1:'Ver trabajos',c2:'Contactar',
  w1:'El',w2:'escaparate',w3:'Seis proyectos en vivo. Desliza: cada uno se abre y responde — webs reales, no imágenes.',open:'Abrir web',live:'Vista en vivo',stop:'Cerrar',
  noir:['Tienda de perfumes','Tienda de lujo con un frasco 3D: líquido, luz y spray en tiempo real. Catálogo, buscador de aromas, carrito.'],
  puri:['Restaurante georgiano','Fuego vivo hecho con shaders, menú con filtros y reserva de mesa. Cálido y rápido en cualquier móvil.'],
