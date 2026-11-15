@@ -133,6 +133,29 @@ main,footer{position:relative}
 .browser,.phone{box-shadow:0 40px 90px -20px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.12)!important}
 .contact::before{background:radial-gradient(circle,rgba(228,236,246,calc(.1*var(--lit))),transparent 62%)!important}
 footer{background:radial-gradient(60% 120% at 50% 100%,rgba(228,236,246,calc(.05*var(--lit))),transparent)}
+
+/* ---------- process timeline ---------- */
+.proc{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;padding-top:56px}
+.track{position:absolute;left:0;right:0;top:15px;height:1px;background:var(--line2)}
+.track .fill{position:absolute;inset:0;background:linear-gradient(90deg,rgba(228,236,246,.3),#fff);transform-origin:left;transform:scaleX(var(--pp,0));box-shadow:0 0 12px rgba(228,236,246,.6)}
+.track .spark{position:absolute;top:50%;left:calc(var(--pp,0)*100%);width:90px;height:3px;margin:-1.5px 0 0 -90px;background:linear-gradient(90deg,transparent,#fff);border-radius:2px;filter:drop-shadow(0 0 6px #fff);opacity:calc(min(1,var(--pp,0)*8)*(1 - var(--pp,0)*.9))}
+.pstep{position:relative;min-width:0}
+.node{position:absolute;top:-56px;left:0;width:31px;height:31px;display:grid;place-items:center;perspective:200px}
+.node i{width:12px;height:12px;border:1px solid var(--line2);background:var(--bg);transform:rotate(45deg);transition:transform 1s cubic-bezier(.2,.9,.25,1.15),background .5s,border-color .5s,box-shadow .5s}
+.pstep.on .node i{background:#fff;border-color:#fff;transform:rotate(45deg) rotateX(360deg) rotateY(360deg) scale(1.15);box-shadow:0 0 18px 2px rgba(228,236,246,.7)}
+.pnum{font-weight:600;font-size:clamp(64px,7vw,110px);line-height:.9;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px var(--line2);transition:color .8s,-webkit-text-stroke-color .8s,transform 1s var(--ease);transform:translateY(16px)}
+.pstep.on .pnum{color:var(--fg);-webkit-text-stroke-color:var(--fg);transform:none}
+.pico{width:38px;height:38px;margin:22px 0 4px;color:var(--fg);opacity:.35;transition:opacity .6s}
+.pico *{stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.6s cubic-bezier(.6,0,.2,1)}
+.pstep.on .pico{opacity:1}.pstep.on .pico *{stroke-dashoffset:0}
+.pstep h4{margin:14px 0 8px;font-weight:600;font-size:24px;letter-spacing:-.03em;opacity:.45;transition:opacity .6s}
+.pstep p{margin:0;color:var(--mut);font-size:15px;opacity:.45;transition:opacity .6s}
+.pstep.on h4,.pstep.on p{opacity:1}
+@media (max-width:1000px){.proc{grid-template-columns:1fr;gap:46px;padding:0 0 0 52px}
+  .track{left:15px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .track .fill{transform-origin:top;transform:scaleY(var(--pp,0));background:linear-gradient(180deg,rgba(228,236,246,.3),#fff)}
+  .track .spark{left:50%;top:calc(var(--pp,0)*100%);width:3px;height:70px;margin:-70px 0 0 -1.5px;background:linear-gradient(180deg,transparent,#fff)}
+  .node{top:6px;left:-52px}.pnum{font-size:64px}.pico{margin-top:14px}}
 /* ---------- marquee ---------- */
 .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
 .marq div{display:inline-flex;gap:46px;animation:mq 38s linear infinite;font-weight:500;font-size:clamp(28px,4vw,52px);letter-spacing:-.04em}
@@ -341,11 +364,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <section class="sec" id="process"><div class="wrap">
   <div class="hd"><h2 class="rv"><span data-t="r1">Как мы</span> <em data-t="r2">работаем</em></h2></div>
-  <div class="steps rv">
-    <div class="step"><span class="mono">01</span><h4 data-t="q1">Бриф</h4><p data-t="q1t">Пара вопросов о бизнесе, целях и вкусе. Можно просто голосовым.</p></div>
-    <div class="step"><span class="mono">02</span><h4 data-t="q2">Дизайн</h4><p data-t="q2t">Показываем первый экран живьём, а не в картинке. Правим, пока не понравится.</p></div>
-    <div class="step"><span class="mono">03</span><h4 data-t="q3">Разработка</h4><p data-t="q3t">Собираем весь сайт и проверяем на телефонах и компьютерах.</p></div>
-    <div class="step"><span class="mono">04</span><h4 data-t="q4">Запуск</h4><p data-t="q4t">Публикуем на вашем домене и остаёмся на связи после запуска.</p></div>
+  <div class="proc" id="proc"><div class="track"><i class="fill"></i><b class="spark"></b></div>
+    <div class="pstep" data-i="0"><div class="node"><i></i></div><div class="pnum">01</div><svg class="pico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h16a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-9l-6 5v-5H8a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4z"/><path d="M11 17h10M11 21h6"/></svg><h4 data-t="q1"></h4><p data-t="q1t"></p></div>
+    <div class="pstep" data-i="1"><div class="node"><i></i></div><div class="pnum">02</div><svg class="pico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="28" height="22" rx="3"/><path d="M4 12h28M10 17h8M10 21h12M24 17h3v5h-3z"/></svg><h4 data-t="q2"></h4><p data-t="q2t"></p></div>
+    <div class="pstep" data-i="2"><div class="node"><i></i></div><div class="pnum">03</div><svg class="pico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 11l-7 7 7 7M23 11l7 7-7 7M20 8l-4 20"/></svg><h4 data-t="q3"></h4><p data-t="q3t"></p></div>
+    <div class="pstep" data-i="3"><div class="node"><i></i></div><div class="pnum">04</div><svg class="pico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4c6 3 9 9 8 16l-4 4h-8l-4-4c-1-7 2-13 8-16z"/><circle cx="18" cy="14" r="3"/><path d="M14 24l-4 6 6-2M22 24l4 6-6-2M16 28v4M20 28v4"/></svg><h4 data-t="q4"></h4><p data-t="q4t"></p></div>
   </div>
 </div></section>
 
@@ -697,6 +720,13 @@ const _al2=applyLang;applyLang=function(){_al2();setWA()};setWA();
     rings.forEach((m,i)=>{const v=m.userData.v;m.rotation.x+=.01*v[0]*(1+(1-e)*8);m.rotation.y+=.01*v[1]*(1+(1-e)*8);m.rotation.z+=.005;m.scale.setScalar(.2+.8*e)});
     gems.forEach(m=>{const d=m.userData;d.a+=.0035/d.s*.3;const r=d.r*(2.4-1.4*e);m.position.set(Math.cos(d.a)*r,d.y+Math.sin(t+d.ph)*.15,Math.sin(d.a)*r-1);m.rotation.y=t*2+d.ph;m.scale.set(d.s*e,d.s*e*1.5,d.s*e)});
     cam.position.x+=(mx*1.6-cam.position.x)*.05;cam.position.y+=(-my*1.2-cam.position.y)*.05;cam.lookAt(0,0,0);R.render(S,cam)}
+})();
+
+/* ---------- process timeline driven by scroll ---------- */
+(function(){const pr=$('#proc'),st=[...pr.querySelectorAll('.pstep')];let tp=0,cp=0;
+  function tg(){const r=pr.getBoundingClientRect(),H=innerHeight;tp=Math.min(1,Math.max(0,(H*.78-r.top)/(r.height+H*.05)))}
+  (function f(){tg();cp+=(tp-cp)*.08;pr.style.setProperty('--pp',cp.toFixed(4));const mob=innerWidth<=1000;
+    st.forEach((s,i)=>{const at=mob?i/(st.length-1)*.92:i/(st.length-1);s.classList.toggle('on',cp>=at-.02)});requestAnimationFrame(f)})();
 })();
 /* ---------- start ---------- */
 try{history.scrollRestoration='manual'}catch(e){}
