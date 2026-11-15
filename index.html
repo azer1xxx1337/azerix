@@ -183,6 +183,18 @@ footer{background:radial-gradient(60% 120% at 50% 100%,rgba(228,236,246,calc(.05
 @keyframes tw{0%,100%{opacity:var(--o);transform:translate(-50%,-50%) scale(1)}50%{opacity:calc(var(--o)*.3);transform:translate(-50%,-50%) scale(.7)}}
 #process .wrap{position:relative}#process .hd,#process .proc{position:relative;z-index:1}
 @media (max-width:1000px){.pst:nth-child(n+5){display:none}}
+
+/* phones: plain vertical list of projects instead of the pinned showcase */
+.mshow .stage{position:relative;height:auto;overflow:visible}
+.mshow .st-in{display:flex;flex-direction:column;gap:0;padding-top:10px;height:auto}
+.mshow .info,.mshow .devs{display:contents}
+.mshow .dv{position:relative;inset:auto;width:100%;align-self:stretch;flex:none;height:62vw;max-height:420px;margin-top:56px;visibility:visible!important;opacity:1!important;transform:none!important;clip-path:none!important}
+.mshow .dv:first-child{margin-top:12px}
+.mshow .proj{position:relative;inset:auto;width:100%;flex:none;display:block;padding:22px 0 8px;visibility:visible!important;pointer-events:auto;border-bottom:1px solid var(--line);padding-bottom:40px}
+.mshow .proj .ln>*{transform:none!important;opacity:1!important}
+.mshow .counter,.mshow .dots,.mshow .bign{display:none}
+.mshow .glow{display:none}
+.mshow .devs{transform:none!important}
 /* ---------- marquee ---------- */
 .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
 .marq div{display:inline-flex;gap:46px;animation:mq 38s linear infinite;font-weight:500;font-size:clamp(28px,4vw,52px);letter-spacing:-.04em}
@@ -545,7 +557,9 @@ let aw=[];function splitAbout(){const el=$('#abig');el.innerHTML=el.textContent.
 const show=$('#show'),stage=$('#stage'),N=P.length;
 const projs=$$('.proj'),dvs=$$('.dv'),dbtn=$$('#dots button');
 let tp=0,cp=0,act=-1,gmx=0,gmy=0,tx=0,ty=0;addEventListener('pointermove',e=>{if(e.pointerType==='mouse'){gmx=e.clientX/innerWidth*2-1;gmy=e.clientY/innerHeight*2-1}},{passive:true});
-function layout(){show.style.height=(N*100+20)+'svh'}
+const isMob=()=>innerWidth<=1000;let wasMob=null;
+function layout(){const m=isMob();show.style.height=m?'auto':(N*100+20)+'svh';document.documentElement.classList.toggle('mshow',m);
+  if(m!==wasMob){wasMob=m;dvs.forEach((d,i)=>{d.style.order=m?i*2:'';if(m){d.style.cssText=`order:${i*2}`}});projs.forEach((p,i)=>{p.style.order=m?i*2+1:'';if(m){p.style.visibility='';p.classList.add('on');p.querySelectorAll('.ln>*').forEach(el=>{el.style.removeProperty('--ty');el.style.removeProperty('--op')})}});if(!m)render()}}
 function target(){const r=show.getBoundingClientRect(),H=innerHeight;const span=show.offsetHeight-H;const k=Math.min(1,Math.max(0,-r.top/span));tp=k*(N-1+.0001)}
 function setAcc(i){const p=P[i];$('#bign').textContent=p.full;$('#cnt').textContent=String(i+1).padStart(2,'0');dbtn.forEach((b,j)=>b.classList.toggle('on',j===i))}
 const ez=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
@@ -568,7 +582,7 @@ function render(){
   $('#pb').style.setProperty('--pp',(cp/(N-1)).toFixed(4));
   $('#bign').style.setProperty('--bx',(-(cp%1)*12)+'vw');
 }
-function loop(){target();cp+=(tp-cp)*.11;if(Math.abs(tp-cp)<.0005)cp=tp;render();
+function loop(){if(!isMob()){target();cp+=(tp-cp)*.11;if(Math.abs(tp-cp)<.0005)cp=tp;render();}
   // header + about words
   $('#hd').classList.toggle('sc',scrollY>40);
   tx+=(gmx-tx)*.06;ty+=(gmy-ty)*.06;const dv=$('#devs');dv.style.setProperty('--ry',(tx*7).toFixed(2)+'deg');dv.style.setProperty('--rx',(-ty*5).toFixed(2)+'deg');dv.style.setProperty('--gl',(50+tx*40).toFixed(1)+'%');
