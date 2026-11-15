@@ -444,7 +444,7 @@ es:{lw:'Últimos trabajos',m1:'proyectos en vivo',m2:'WebGL y Three.js',m3:'idio
 const LN={uk:'UA',ru:'RU',en:'EN',es:'ES'};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 let lang='ru';try{const q=(navigator.language||'').slice(0,2);if(T[q])lang=q;if(q==='uk')lang='uk';const sv=localStorage.getItem('azx-lang');if(sv&&T[sv])lang=sv}catch(e){}
-const isLiveHost=/github\.io$/.test(location.hostname);
+const isLiveHost=/github\.io$|pages\.dev$|azerix/.test(location.hostname);
 
 /* ---------- build showcase ---------- */
 const info=$('#info'),devs=$('#devs'),dots=$('#dots');
