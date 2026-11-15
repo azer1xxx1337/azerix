@@ -138,7 +138,8 @@ footer{background:radial-gradient(60% 120% at 50% 100%,rgba(228,236,246,calc(.05
 .proc{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;padding-top:56px}
 .track{position:absolute;left:0;right:0;top:15px;height:1px;background:var(--line2)}
 .track .fill{position:absolute;inset:0;background:linear-gradient(90deg,rgba(228,236,246,.3),#fff);transform-origin:left;transform:scaleX(var(--pp,0));box-shadow:0 0 12px rgba(228,236,246,.6)}
-.track .spark{position:absolute;top:50%;left:calc(var(--pp,0)*100%);width:90px;height:3px;margin:-1.5px 0 0 -90px;background:linear-gradient(90deg,transparent,#fff);border-radius:2px;filter:drop-shadow(0 0 6px #fff);opacity:calc(min(1,var(--pp,0)*8)*(1 - var(--pp,0)*.9))}
+.track .spark{position:absolute;top:50%;left:calc(var(--pp,0)*100%);width:150px;height:2px;margin:-1px 0 0 -150px;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(228,236,246,.25) 55%,#fff);opacity:calc(min(1,var(--pp,0)*10))}
+.track .spark::after{content:"";position:absolute;right:-4px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#fff;box-shadow:0 0 6px 2px #fff,0 0 22px 6px rgba(228,236,246,.45)}
 .pstep{position:relative;min-width:0}
 .node{position:absolute;top:-56px;left:0;width:31px;height:31px;display:grid;place-items:center;perspective:200px}
 .node i{width:12px;height:12px;border:1px solid var(--line2);background:var(--bg);transform:rotate(45deg);transition:transform 1s cubic-bezier(.2,.9,.25,1.15),background .5s,border-color .5s,box-shadow .5s}
@@ -154,7 +155,8 @@ footer{background:radial-gradient(60% 120% at 50% 100%,rgba(228,236,246,calc(.05
 @media (max-width:1000px){.proc{grid-template-columns:1fr;gap:46px;padding:0 0 0 52px}
   .track{left:15px;right:auto;top:0;bottom:0;width:1px;height:auto}
   .track .fill{transform-origin:top;transform:scaleY(var(--pp,0));background:linear-gradient(180deg,rgba(228,236,246,.3),#fff)}
-  .track .spark{left:50%;top:calc(var(--pp,0)*100%);width:3px;height:70px;margin:-70px 0 0 -1.5px;background:linear-gradient(180deg,transparent,#fff)}
+  .track .spark{left:50%;top:calc(var(--pp,0)*100%);width:2px;height:110px;margin:-110px 0 0 -1px;background:linear-gradient(180deg,transparent,rgba(228,236,246,.25) 55%,#fff)}
+  .track .spark::after{right:auto;left:50%;top:auto;bottom:-4px;margin:0 0 0 -4px}
   .node{top:6px;left:-52px}.pnum{font-size:64px}.pico{margin-top:14px}}
 
 
@@ -172,6 +174,12 @@ footer{background:radial-gradient(60% 120% at 50% 100%,rgba(228,236,246,calc(.05
   background:linear-gradient(118deg,transparent 28%,rgba(255,255,255,.075) 42%,rgba(255,255,255,.02) 50%,transparent 58%),linear-gradient(180deg,rgba(255,255,255,.05),transparent 22%);
   background-size:260% 100%,100% 100%;background-position:var(--gp,100%) 0,0 0;transition:background-position 1.1s cubic-bezier(.2,.8,.2,1)}
 .svc .card:hover::after{--gp:0%}
+
+.bstars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bst{position:absolute;fill:#e4ecf6;opacity:var(--o);transform:translate(-50%,-50%) rotate(var(--r));animation:tw var(--d) ease-in-out infinite;animation-delay:var(--dl)}
+@keyframes tw{0%,100%{opacity:var(--o);transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}50%{opacity:calc(var(--o)*.35);transform:translate(-50%,-50%) rotate(calc(var(--r) + 12deg)) scale(.82)}}
+main{z-index:1}footer{z-index:1}
+@media (max-width:700px){.bst:nth-child(n+8){display:none}}
 /* ---------- marquee ---------- */
 .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
 .marq div{display:inline-flex;gap:46px;animation:mq 38s linear infinite;font-weight:500;font-size:clamp(28px,4vw,52px);letter-spacing:-.04em}
@@ -324,6 +332,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <body>
 <div id="pre" aria-hidden="true"><canvas id="pcv"></canvas><div class="w"><span style="--i:0">A</span><span style="--i:1">z</span><span style="--i:2">e</span><span style="--i:3">r</span><span style="--i:4">i</span><span style="--i:5">x</span></div><div class="sub">COMPANY</div><div class="n" id="pn">000</div></div>
 
+<div class="bstars" aria-hidden="true"><svg class="bst" viewBox="0 0 100 100" style="left:32.8%;top:17.9%;width:140px;--o:0.037;--d:9.9s;--dl:-0.8s;--r:23deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:86.7%;top:23.8%;width:46px;--o:0.052;--d:5.4s;--dl:-0.7s;--r:17deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:79.1%;top:15.4%;width:60px;--o:0.060;--d:8.5s;--dl:-0.5s;--r:23deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:7.6%;top:24.3%;width:110px;--o:0.069;--d:6.7s;--dl:-1.2s;--r:5deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:31.4%;top:79.1%;width:60px;--o:0.039;--d:8.4s;--dl:-1.5s;--r:4deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:68.5%;top:55.9%;width:110px;--o:0.043;--d:9.1s;--dl:-3.4s;--r:13deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:56.9%;top:45.7%;width:72px;--o:0.045;--d:6.1s;--dl:-6.2s;--r:3deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:30.6%;top:49.6%;width:72px;--o:0.064;--d:6.7s;--dl:-7.8s;--r:5deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:41.5%;top:73.7%;width:60px;--o:0.072;--d:7.5s;--dl:-7.7s;--r:3deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:54.3%;top:76.6%;width:72px;--o:0.049;--d:7.1s;--dl:-4.0s;--r:32deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg><svg class="bst" viewBox="0 0 100 100" style="left:9.3%;top:12.6%;width:72px;--o:0.054;--d:9.0s;--dl:-0.5s;--r:28deg"><path d="M50 0C52 34 66 48 100 50 66 52 52 66 50 100 48 66 34 52 0 50 34 48 48 34 50 0Z"/></svg></div>
 <header id="hd"><div class="wrap">
   <a class="logo" href="#top" aria-label="Azerix Company"><i></i>Azerix<small>company</small></a>
   <nav class="main"><a href="#work" data-t="n1">Работы</a><a href="#services" data-t="n2">Услуги</a><a href="#process" data-t="n3">Процесс</a><a href="#about" data-t="n4">О нас</a></nav>
